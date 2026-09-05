@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Admin Dashboard - ShopEase{% endblock %}
+{% block content %}
+<h1>👨‍💻 Admin Dashboard</h1>
+<p>Welcome, {{ session.get('admin_name') }}!</p>
+<div class="stats">
+    <div class="stat"><h2>{{ total_users }}</h2><p>Total Users</p></div>
+    <div class="stat"><h2>{{ total_products }}</h2><p>Total Products</p></div>
+    <div class="stat"><h2>{{ total_orders }}</h2><p>Total Orders</p></div>
+    <div class="stat"><h2>₹{{ total_sales }}</h2><p>Total Sales</p></div>
+</div>
+<br>
+<a class="btn primary" href="/admin/products">📦 Manage Products</a>
+<a class="btn" href="/admin/orders">📋 Manage Orders</a>
+<a class="btn danger" href="/admin_logout">Logout</a>
+{% endblock %}

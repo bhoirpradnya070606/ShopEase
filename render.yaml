@@ -3,13 +3,10 @@ services:
     name: shopease
     runtime: python
     plan: free
-
     buildCommand: pip install -r requirements.txt
     startCommand: gunicorn app:app
-
     envVars:
       - key: SECRET_KEY
         generateValue: true
-
       - key: SQLITE_DB_PATH
         value: /tmp/shopease.db

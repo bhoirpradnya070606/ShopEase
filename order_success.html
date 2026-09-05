@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Order Successful - ShopEase{% endblock %}
+{% block content %}
+<div class="success-box">
+    <div style="font-size:70px">✅</div>
+    <h1>Order Placed Successfully!</h1>
+    <p><b>Order ID:</b> #{{ order_id }}</p>
+    <p><b>Name:</b> {{ name }}</p>
+    <p><b>Email:</b> {{ email }}</p>
+    <p><b>Payment:</b> {{ payment }}</p>
+    <p><b>Total:</b> ₹{{ total }}</p>
+    <a class="btn primary" href="/my_orders">My Orders</a>
+    <a class="btn" href="/products">Continue Shopping</a>
+</div>
+{% endblock %}

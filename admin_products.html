@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Manage Products - ShopEase{% endblock %}
+{% block content %}
+<h1>📦 Manage Products</h1>
+<a class="btn success" href="/admin/add_product">➕ Add Product</a>
+<a class="btn" href="/admin">Dashboard</a>
+<div class="table-wrap" style="margin-top:20px">
+<table class="table">
+<tr><th>ID</th><th>Name</th><th>Price</th><th>Category</th><th>Description</th><th>Actions</th></tr>
+{% for p in products %}
+<tr>
+<td>{{ p.id }}</td><td>{{ p.name }}</td><td>₹{{ p.price }}</td><td>{{ p.category }}</td><td>{{ p.description }}</td>
+<td>
+<a class="btn" href="/admin/edit_product/{{ p.id }}">Edit</a>
+<form class="inline" method="POST" action="/admin/delete_product/{{ p.id }}" onsubmit="return confirm('Delete this product?')">
+<button class="btn danger" type="submit">Delete</button>
+</form>
+</td>
+</tr>
+{% endfor %}
+</table>
+</div>
+{% endblock %}

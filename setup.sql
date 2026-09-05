@@ -1,0 +1,3 @@
+-- ShopEase database note
+-- The free-deployment version automatically creates its SQLite database from app.py.
+-- No manual SQL setup is required for the Render demo.
