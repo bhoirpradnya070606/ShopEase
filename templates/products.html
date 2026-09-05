@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Products - ShopEase{% endblock %}
+{% block content %}
+<h1>🛍️ ShopEase Products</h1>
+<form class="searchbar" method="GET" action="/products">
+    <input name="search" value="{{ search }}" placeholder="Search products...">
+    <select name="category">
+        <option value="">All Categories</option>
+        {% for c in ["Fashion","Electronics","Accessories","Home","Books"] %}
+        <option value="{{ c }}" {% if category==c %}selected{% endif %}>{{ c }}</option>
+        {% endfor %}
+    </select>
+    <button class="btn primary" type="submit">Search</button>
+    <a class="btn" href="/products">Reset</a>
+</form>
+<div class="grid">
+{% for product in products %}
+<div class="card">
+    <div class="product-icon">
+        {% if product.category=="Fashion" %}👕
+        {% elif product.category=="Electronics" %}🎧
+        {% elif product.category=="Accessories" %}🎒
+        {% elif product.category=="Home" %}🏠
+        {% elif product.category=="Books" %}📚
+        {% else %}📦{% endif %}
+    </div>
+    <h2>{{ product.name }}</h2>
+    <p class="muted">{{ product.category }}</p>
+    <p>{{ product.description }}</p>
+    <p class="price">₹{{ product.price }}</p>
+    <a class="btn" href="/product/{{ product.id }}">View Details</a>
+    <a class="btn primary" href="/add_to_cart/{{ product.id }}">Add to Cart</a>
+</div>
+{% else %}
+<div class="empty"><h2>No products found</h2><a class="btn" href="/products">View All Products</a></div>
+{% endfor %}
+</div>
+{% endblock %}

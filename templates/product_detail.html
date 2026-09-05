@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}{{ product.name }} - ShopEase{% endblock %}
+{% block content %}
+<div class="card">
+    <div class="product-icon">📦</div>
+    <h1>{{ product.name }}</h1>
+    <p><b>Category:</b> {{ product.category }}</p>
+    <p>{{ product.description }}</p>
+    <p class="price">₹{{ product.price }}</p>
+    <a class="btn primary" href="/add_to_cart/{{ product.id }}">Add to Cart</a>
+    <a class="btn" href="/products">Back</a>
+</div>
+{% endblock %}

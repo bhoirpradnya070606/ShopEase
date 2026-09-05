@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Checkout - ShopEase{% endblock %}
+{% block content %}
+<h1>💳 Checkout</h1>
+<div class="card"><h2>Order Total: ₹{{ total }}</h2></div>
+<form class="form" method="POST" action="/place_order">
+    <label>Full Name</label><input name="name" value="{{ session.get('user_name','') }}" required>
+    <label>Email</label><input type="email" name="email" value="{{ session.get('user_email','') }}" required>
+    <label>Phone</label><input name="phone" required>
+    <label>Delivery Address</label><textarea name="address" rows="4" required></textarea>
+    <label>Payment Method</label>
+    <select name="payment" required>
+        <option value="Cash on Delivery">Cash on Delivery</option>
+        <option value="UPI">UPI</option>
+        <option value="Card">Card</option>
+    </select>
+    <button class="btn success" type="submit">Place Order</button>
+</form>
+{% endblock %}

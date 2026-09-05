@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Cart - ShopEase{% endblock %}
+{% block content %}
+<h1>🛒 Shopping Cart</h1>
+{% if items %}
+<div class="table-wrap">
+<table class="table">
+<tr><th>Product</th><th>Price</th><th>Quantity</th><th>Subtotal</th><th>Action</th></tr>
+{% for item in items %}
+<tr>
+<td>{{ item.product.name }}</td>
+<td>₹{{ item.product.price }}</td>
+<td><span class="qty"><a href="/decrease_quantity/{{ item.product.id }}">−</a>{{ item.quantity }}<a href="/increase_quantity/{{ item.product.id }}">+</a></span></td>
+<td>₹{{ item.subtotal }}</td>
+<td><a class="btn danger" href="/remove_from_cart/{{ item.product.id }}">Remove</a></td>
+</tr>
+{% endfor %}
+</table>
+</div>
+<h2>Total: ₹{{ total }}</h2>
+<a class="btn primary" href="/checkout">Proceed to Checkout</a>
+{% else %}
+<div class="empty"><h2>Your cart is empty</h2><a class="btn primary" href="/products">Shop Products</a></div>
+{% endif %}
+{% endblock %}

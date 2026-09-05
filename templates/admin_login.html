@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Admin Login - ShopEase{% endblock %}
+{% block content %}
+<h1>🔐 Admin Login</h1>
+<form class="form" method="POST">
+    <label>Email</label><input type="email" name="email" value="admin@shopease.com" required>
+    <label>Password</label><input type="password" name="password" required>
+    <button class="btn primary" type="submit">Admin Login</button>
+</form>
+<p>Demo admin: admin@shopease.com / admin123</p>
+{% endblock %}
